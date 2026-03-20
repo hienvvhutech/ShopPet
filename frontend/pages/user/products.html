@@ -1,0 +1,362 @@
+<!DOCTYPE html>
+<html lang="vi">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>PetShop</title>
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+    />
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap-icons/font/bootstrap-icons.css"
+      rel="stylesheet"
+    />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="../../css/components.css" />
+    <link rel="stylesheet" href="../../css/user/product.css" />
+  </head>
+  <body>
+    <div id="header-container"></div>
+
+    <main class="container mt-4 flex-fill">
+      <div
+        id="petShopCarousel"
+        class="carousel slide mb-4"
+        data-bs-ride="carousel"
+      >
+        <div class="carousel-inner">
+          <div
+            class="carousel-item active"
+            style="
+              background-image: url('https://www.vetad.net/wp-content/uploads/2018/10/Banner3-1.jpg');
+            "
+          >
+            <div class="carousel-overlay">
+              <div>
+                <h1>Chào mừng đến với Shopping Pet!</h1>
+                <p>Mua sắm mọi thứ cho thú cưng của bạn với giá tốt nhất</p>
+                <a href="products.html" class="btn btn-pink btn-lg mt-3"
+                  >Khám phá ngay</a
+                >
+              </div>
+            </div>
+          </div>
+          <div
+            class="carousel-item"
+            style="
+              background-image: url('https://png.pngtree.com/thumb_back/fw800/background/20220827/pngtree-pet-shop-cat-and-dog-vector-background-image_1462686.jpg');
+            "
+          >
+            <div class="carousel-overlay">
+              <div>
+                <h1>Yêu thương thú cưng của bạn</h1>
+                <p>Khám phá các sản phẩm chất lượng cao cho bạn đồng hành</p>
+                <a href="products.html" class="btn btn-pink btn-lg mt-3"
+                  >Mua ngay</a
+                >
+              </div>
+            </div>
+          </div>
+        </div>
+        <button
+          class="carousel-control-prev"
+          type="button"
+          data-bs-target="#petShopCarousel"
+          data-bs-slide="prev"
+        >
+          <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+          <span class="visually-hidden">Previous</span>
+        </button>
+        <button
+          class="carousel-control-next"
+          type="button"
+          data-bs-target="#petShopCarousel"
+          data-bs-slide="next"
+        >
+          <span class="carousel-control-next-icon" aria-hidden="true"></span>
+          <span class="visually-hidden">Next</span>
+        </button>
+      </div>
+
+      <div class="content-section">
+      <div class="container">
+        <div class="row g-4">
+          <!-- Filters Sidebar -->
+          <div class="col-lg-3">
+            <div class="filter-card">
+              <div class="filter-header">
+                <h5><i class="bi bi-funnel-fill me-2"></i>Bộ lọc</h5>
+                <a href="#" onclick="resetFilters()" class="btn-reset">
+                  <i class="bi bi-x-circle me-1"></i>Xóa tất cả
+                </a>
+              </div>
+
+              <div class="filter-group">
+                <div
+                  class="filter-title"
+                  data-bs-toggle="collapse"
+                  data-bs-target="#filterCategory"
+                  aria-expanded="true"
+                >
+                  <span><i class="bi bi-tags me-2"></i>Danh mục</span>
+                </div>
+                <div id="filterCategory" class="collapse show">
+                  <div id="dynamicCategories"></div>
+                </div>
+              </div>
+
+              <div class="filter-group">
+                <div
+                  class="filter-title"
+                  data-bs-toggle="collapse"
+                  data-bs-target="#filterPrice"
+                  aria-expanded="true"
+                >
+                  <span
+                    ><i class="bi bi-currency-dollar me-2"></i>Khoảng giá</span
+                  >
+                </div>
+                <div id="filterPrice" class="collapse show">
+                  <div class="form-check">
+                    <input
+                      class="form-check-input"
+                      type="radio"
+                      name="price"
+                      value=""
+                      id="priceAll"
+                      checked
+                    />
+                    <label class="form-check-label" for="priceAll"
+                      >Tất cả</label
+                    >
+                  </div>
+                  <div class="form-check">
+                    <input
+                      class="form-check-input"
+                      type="radio"
+                      name="price"
+                      value="0-100000"
+                      id="price1"
+                    />
+                    <label class="form-check-label" for="price1"
+                      >0đ - 100,000đ</label
+                    >
+                  </div>
+                  <div class="form-check">
+                    <input
+                      class="form-check-input"
+                      type="radio"
+                      name="price"
+                      value="100000-300000"
+                      id="price2"
+                    />
+                    <label class="form-check-label" for="price2"
+                      >100,000đ - 300,000đ</label
+                    >
+                  </div>
+                  <div class="form-check">
+                    <input
+                      class="form-check-input"
+                      type="radio"
+                      name="price"
+                      value="300000-500000"
+                      id="price3"
+                    />
+                    <label class="form-check-label" for="price3"
+                      >300,000đ - 500,000đ</label
+                    >
+                  </div>
+                  <div class="form-check">
+                    <input
+                      class="form-check-input"
+                      type="radio"
+                      name="price"
+                      value="500000-"
+                      id="price4"
+                    />
+                    <label class="form-check-label" for="price4"
+                      >Trên 500,000đ</label
+                    >
+                  </div>
+                </div>
+              </div>
+
+              <div class="filter-group">
+                <div
+                  class="filter-title"
+                  data-bs-toggle="collapse"
+                  data-bs-target="#filterRating"
+                  aria-expanded="true"
+                >
+                  <span><i class="bi bi-star-fill me-2"></i>Đánh giá</span>
+                </div>
+                <div id="filterRating" class="collapse show">
+                  <div class="form-check">
+                    <input
+                      class="form-check-input"
+                      type="radio"
+                      name="rating"
+                      value=""
+                      id="ratingAll"
+                      checked
+                    />
+                    <label class="form-check-label" for="ratingAll"
+                      >Tất cả đánh giá</label
+                    >
+                  </div>
+                  <div class="form-check">
+                    <input
+                      class="form-check-input"
+                      type="radio"
+                      name="rating"
+                      value="5"
+                      id="rating5"
+                    />
+                    <label class="form-check-label" for="rating5">
+                      <span class="star-rating">⭐⭐⭐⭐⭐</span> 5 sao
+                    </label>
+                  </div>
+                  <div class="form-check">
+                    <input
+                      class="form-check-input"
+                      type="radio"
+                      name="rating"
+                      value="4"
+                      id="rating4"
+                    />
+                    <label class="form-check-label" for="rating4">
+                      <span class="star-rating">⭐⭐⭐⭐</span> 4 sao
+                    </label>
+                  </div>
+                  <div class="form-check">
+                    <input
+                      class="form-check-input"
+                      type="radio"
+                      name="rating"
+                      value="3"
+                      id="rating3"
+                    />
+                    <label class="form-check-label" for="rating3">
+                      <span class="star-rating">⭐⭐⭐</span> 3 sao
+                    </label>
+                  </div>
+                  <div class="form-check">
+                    <input
+                      class="form-check-input"
+                      type="radio"
+                      name="rating"
+                      value="2"
+                      id="rating2"
+                    />
+                    <label class="form-check-label" for="rating2">
+                      <span class="star-rating">⭐⭐</span> 2 sao
+                    </label>
+                  </div>
+                  <div class="form-check">
+                    <input
+                      class="form-check-input"
+                      type="radio"
+                      name="rating"
+                      value="1"
+                      id="rating1"
+                    />
+                    <label class="form-check-label" for="rating1">
+                      <span class="star-rating">⭐</span> 1 sao
+                    </label>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        
+        <div class="col-lg-9">
+            <div class="products-section">
+              <!-- Search and Sort Controls -->
+              <div class="search-controls" style="background: #cccccc">
+                <div class="row g-3">
+                  <div class="col-md-6">
+                    <div class="position-relative">
+                      <i
+                        class="bi bi-search position-absolute top-50 start-0 translate-middle-y ms-3 text-muted"
+                      ></i>
+                      <input
+                        type="text"
+                        class="form-control ps-5"
+                        id="searchInput"
+                        placeholder="Tìm kiếm sản phẩm..."
+                      />
+                    </div>
+                  </div>
+                  <div class="col-md-6">
+                    <select id="sortSelect" class="form-select">
+                      <option value="name">
+                        <i class="bi bi-sort-alpha-down"></i> Sắp xếp theo tên
+                      </option>
+                      <option value="priceAsc">
+                        <i class="bi bi-sort-numeric-down"></i> Giá thấp đến cao
+                      </option>
+                      <option value="priceDesc">
+                        <i class="bi bi-sort-numeric-down-alt"></i> Giá cao đến
+                        thấp
+                      </option>
+                      <option value="rating">
+                        <i class="bi bi-star-fill"></i> Đánh giá cao nhất
+                      </option>
+                    </select>
+                  </div>
+                </div>
+              </div>
+              <div class="row g-4" id="productList">
+              </div>
+              <nav aria-label="Product pagination">
+                <ul
+                  class="pagination justify-content-center"
+                  id="paginationContainer"
+                  style="background: #cccccc"
+                ></ul>
+              </nav>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div id="footer-container"></div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="../../js/components/components.js"></script>
+    <script src="../../js/user/products.js"></script>
+    <script>
+  document.addEventListener("DOMContentLoaded", () => {
+    const userRaw = localStorage.getItem("user");
+    const user = userRaw ? JSON.parse(userRaw) : null;
+
+    let headerPath = "../../components/header.html";
+    const roles = user?.roles || [];
+
+    if (roles.includes("Admin")) {
+      headerPath = "../../components/header-admin.html";
+    } else if (roles.includes("Customer")) {
+      headerPath = "../../components/header-user.html";
+    }
+
+    console.log("➡️ Đang load:", headerPath);
+
+    fetch(headerPath)
+      .then((res) => res.text())
+      .then((html) => {
+        document.getElementById("header-container").innerHTML = html;
+
+        const script = document.createElement("script");
+        script.src = "../../js/Login/header-auth.js";
+        script.onload = () => console.log("✅ header-auth.js loaded");
+        document.body.appendChild(script);
+      });
+  });
+</script>
+  </body>
+</html>

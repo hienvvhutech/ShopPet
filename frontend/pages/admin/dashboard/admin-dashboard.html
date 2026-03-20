@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="vi">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Admin | PetShop</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css"
+    />
+    <link rel="stylesheet" href="../../css/style.css" />
+  </head>
+  <body>
+    <div class="container-fluid">
+      <div class="row">
+        <div class="col-3 p-0" id="header-container"></div>
+        <div class="col-9 py-4 px-5" id="main-content">
+          <h2 class="mb-4">📊 Thống kê tổng quan</h2>
+          <div class="row g-4" id="summaryContainer"></div>
+          <hr class="my-5" />
+          <h4>📈 Biểu đồ doanh thu</h4>
+          <canvas id="revenueChart" height="100"></canvas>
+          <h5 class="mt-5">📊 Trạng thái đơn hàng</h5>
+          <div class="row align-items-center my-4">
+            <div class="col-md-4 text-center" id="orderStatusStatsText"></div>
+            <div class="col-md-8 text-center">
+              <canvas
+                id="orderStatusChart"
+                style="max-width: 300px; max-height: 300px"
+              ></canvas>
+            </div>
+          </div>
+
+          <script src="/js/Admin/dashboard.js"></script>
+          <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+        </div>
+      </div>
+    </div>
+    <script>
+      const userRaw = localStorage.getItem("user");
+      const user = userRaw ? JSON.parse(userRaw) : null;
+
+      let headerPath = "/components/header.html";
+      const roles = user?.roles || [];
+
+      if (roles.includes("Admin")) {
+        headerPath = "/components/header-admin.html";
+      } else if (roles.includes("Customer")) {
+        headerPath = "/components/header-user.html";
+      }
+
+      fetch(headerPath)
+        .then((res) => res.text())
+        .then((html) => {
+          document.getElementById("header-container").innerHTML = html;
+          const script = document.createElement("script");
+          script.src = "/js/Login/header-auth.js";
+          document.body.appendChild(script);
+        });
+    </script>
+  </body>
+</html>

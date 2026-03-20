@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="vi">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Quản trị Admin | PetShop</title>
+    <link rel="stylesheet" href="../../assets/bootstrap.min.css" />
+    <link rel="stylesheet" href="../../assets/style.css" />
+  </head>
+  <body>
+    <div class="container-fluid">
+      <div class="row">
+        <div class="col-3 p-0" id="header-container"></div>
+        <div class="col-9 py-4 px-5" id="main-content">
+          <h2>Chào mừng đến với trang quản trị</h2>
+          <p>Chọn chức năng bên menu trái để bắt đầu.</p>
+        </div>
+      </div>
+    </div>
+
+    <script>
+      const userRaw = localStorage.getItem("user");
+      const user = userRaw ? JSON.parse(userRaw) : null;
+      let headerPath = "../../components/header.html";
+
+      const roles = user?.roles || [];
+
+      if (roles.includes("Admin")) {
+        headerPath = "../../components/header-admin.html";
+      } else if (roles.includes("Customer")) {
+        headerPath = "../../components/header-user.html";
+      }
+
+      fetch(headerPath)
+        .then((res) => res.text())
+        .then((html) => {
+          document.getElementById("header-container").innerHTML = html;
+          const script = document.createElement("script");
+          script.src = "../../js/Login/header-auth.js";
+          document.body.appendChild(script);
+        });
+    </script>
+  </body>
+</html>

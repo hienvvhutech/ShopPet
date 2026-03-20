@@ -1,0 +1,85 @@
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+  <div class="container-fluid">
+    <a class="navbar-brand" href="/pages/user/index.html">PetShop</a>
+    <button
+      class="navbar-toggler"
+      type="button"
+      data-bs-toggle="collapse"
+      data-bs-target="#navbarNav"
+    >
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarNav">
+      <ul class="navbar-nav ms-auto align-items-center">
+        <li class="nav-item me-2">
+          <a class="nav-link" href="/pages/user/home.html">Trang chủ</a>
+        </li>
+        <li class="nav-item me-2">
+          <a class="nav-link" href="/pages/user/products.html">Sản phẩm</a>
+        </li>
+        <li class="nav-item me-2">
+          <a class="nav-link" href="/pages/user/order.html">Đơn hàng</a>
+        </li>
+        <li class="nav-item me-2">
+          <a class="nav-link" href="/pages/user/my-reviews.html">Đánh giá</a>
+        </li>
+        <li class="nav-item position-relative me-3">
+          <a class="nav-link" href="/pages/user/cart.html">
+            <span
+              id="cartCountBadge"
+              class="badge bg-danger rounded-pill position-absolute top-0 start-100 translate-middle d-none"
+              >0</span
+            >
+          </a>
+        </li>
+        <li class="nav-item me-3">
+          <span
+            id="userNameDisplay"
+            class="text-white fw-semibold d-none"
+          ></span>
+        </li>
+        <li class="nav-item" id="authArea">
+          <a id="loginLink" class="nav-link" href="/pages/login.html"
+            >Đăng nhập</a
+          >
+          <a
+            id="logoutLink"
+            class="nav-link text-danger d-none"
+            href="/pages/index.html"
+            >Đăng xuất</a
+          >
+        </li>
+      </ul>
+    </div>
+  </div>
+</nav>
+
+<script>
+  document.addEventListener("DOMContentLoaded", () => {
+    const token = localStorage.getItem("token");
+    const userRaw = localStorage.getItem("user");
+    const user = userRaw ? JSON.parse(userRaw) : null;
+
+    const loginLink = document.getElementById("loginLink");
+    const logoutLink = document.getElementById("logoutLink");
+    const userNameDisplay = document.getElementById("userNameDisplay");
+
+    if (token && user) {
+      loginLink.classList.add("d-none");
+      logoutLink.classList.remove("d-none");
+
+      userNameDisplay.classList.remove("d-none");
+      userNameDisplay.innerText = user.fullName || user.email || "Tài khoản";
+    } else {
+      loginLink.classList.remove("d-none");
+      logoutLink.classList.add("d-none");
+      userNameDisplay.classList.add("d-none");
+    }
+
+    logoutLink?.addEventListener("click", (e) => {
+      e.preventDefault();
+      localStorage.clear();
+      window.location.href = "/pages/index.html";
+    });
+  });
+</script>

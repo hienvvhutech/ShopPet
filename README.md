@@ -1,6 +1,6 @@
 # ShopPet
 
-ShopPet là dự án fullstack mô phỏng hệ thống bán thú cưng và phụ kiện thú cưng, bao gồm backend xử lý API, cơ sở dữ liệu và frontend hiển thị giao diện cho người dùng. Dự án được xây dựng nhằm phục vụ học tập, thực hành phát triển phần mềm và làm portfolio cá nhân.
+ShopPet là dự án fullstack mô phỏng hệ thống bán sản phẩm thú cưng và phụ kiện thú cưng, bao gồm backend xử lý API, cơ sở dữ liệu và frontend hiển thị giao diện cho người dùng. Dự án được xây dựng nhằm phục vụ học tập, thực hành phát triển phần mềm và làm portfolio cá nhân.
 
 ---
 
